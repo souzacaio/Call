@@ -1,0 +1,125 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"PowerManagement\"><param name=\"android-package\" value=\"org.apache.cordova.powermanagement.PowerManagement\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Ringtone\"><param name=\"android-package\" value=\"com.hiraqui.ringtone.Ringtone\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AudioTogglePlugin\"><param name=\"android-package\" value=\"com.dooble.audiotoggle.AudioTogglePlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"BackgroundFetch\"><param name=\"android-package\" value=\"com.transistorsoft.cordova.backgroundfetch.CDVBackgroundFetch\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest/application": [
+                        {
+                            "xml": "<service android:exported=\"true\" android:name=\"com.transistorsoft.cordova.backgroundfetch.HeadlessJobService\" android:permission=\"android.permission.BIND_JOB_SERVICE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:name=\"com.transistorsoft.cordova.backgroundfetch.HeadlessBroadcastReceiver\"><intent-filter><action android:name=\"${applicationId}.event.BACKGROUND_FETCH\" /></intent-filter></receiver>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "at.gofg.sportscomputer.powermanagement": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "com.hiraqui.ringtone": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-audiotoggle": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-background-fetch": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "id": "at.gofg.sportscomputer.powermanagement.device",
+            "file": "plugins/at.gofg.sportscomputer.powermanagement/www/powermanagement.js",
+            "pluginId": "at.gofg.sportscomputer.powermanagement",
+            "clobbers": [
+                "window.powerManagement"
+            ]
+        },
+        {
+            "id": "com.hiraqui.ringtone.ringtone",
+            "file": "plugins/com.hiraqui.ringtone/www/ringtone.js",
+            "pluginId": "com.hiraqui.ringtone",
+            "clobbers": [
+                "ringtone"
+            ]
+        },
+        {
+            "id": "cordova-plugin-audiotoggle.AudioToggle",
+            "file": "plugins/cordova-plugin-audiotoggle/www/audiotoggle.js",
+            "pluginId": "cordova-plugin-audiotoggle",
+            "clobbers": [
+                "AudioToggle"
+            ]
+        },
+        {
+            "id": "cordova-plugin-background-fetch.BackgroundFetch",
+            "file": "plugins/cordova-plugin-background-fetch/www/BackgroundFetch.js",
+            "pluginId": "cordova-plugin-background-fetch",
+            "clobbers": [
+                "window.BackgroundFetch"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "at.gofg.sportscomputer.powermanagement": "1.1.0",
+        "com.hiraqui.ringtone": "0.6.1",
+        "cordova-plugin-audiotoggle": "1.0.3",
+        "cordova-plugin-background-fetch": "5.4.1"
+    }
+}

@@ -1,0 +1,49 @@
+{
+  "_from": "git+https://github.com/boltex/cordova-plugin-powermanagement.git",
+  "_id": "cordova-plugin-powermanagement-orig@1.1.0",
+  "_inBundle": false,
+  "_location": "/cordova-plugin-powermanagement-orig",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/boltex/cordova-plugin-powermanagement.git",
+    "rawSpec": "https://github.com/boltex/cordova-plugin-powermanagement.git",
+    "saveSpec": "git+https://github.com/boltex/cordova-plugin-powermanagement.git",
+    "fetchSpec": "https://github.com/boltex/cordova-plugin-powermanagement.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/boltex/cordova-plugin-powermanagement.git#dd5b6d7dcc01939df82f989a12bf4b9282ae1b10",
+  "_spec": "https://github.com/boltex/cordova-plugin-powermanagement.git",
+  "_where": "C:\\Users\\Diego Ramos\\Desktop\\ControlCondoMobile_homologacao\\teste\\fw7",
+  "author": {
+    "name": "Viras-"
+  },
+  "bugs": {
+    "url": "https://github.com/boltex/cordova-plugin-powermanagement/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Plugin for managing the power state (i.e. idle switching) for cordova",
+  "homepage": "https://github.com/boltex/cordova-plugin-powermanagement#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-wp7",
+    "cordova-wp8"
+  ],
+  "license": "Apache-2.0",
+  "name": "cordova-plugin-powermanagement-orig",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boltex/cordova-plugin-powermanagement.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.1.0"
+}

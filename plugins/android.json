@@ -1,0 +1,25 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "at.gofg.sportscomputer.powermanagement": {
+      "PACKAGE_NAME": "com.phonegap.helloworld"
+    },
+    "com.hiraqui.ringtone": {
+      "PACKAGE_NAME": "com.phonegap.helloworld"
+    },
+    "cordova-plugin-audiotoggle": {
+      "PACKAGE_NAME": "com.phonegap.helloworld"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-background-fetch": {
+      "PACKAGE_NAME": "com.phonegap.helloworld"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+<template>
+  <div class="page" data-name="catalog">
+    <div class="navbar">
+      <div class="navbar-inner sliding">
+        <div class="title">Ligar</div>
+        <div class="online" style="margin-left: 39%;"></div><span class="online-t">Desconectado</span>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="list links-list">
+        <ul>
+          {{#each products}}
+            <li><a href="/product/{{id}}/">{{title}}</a></li>
+          {{/each}}
+          <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Ramal</div>
+                  <div class="item-input-wrap">
+                    <input type="number" placeholder="Ramal" id="callramal">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+                <div class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label"></div>
+                    <div class="">
+                        <button style="width:71%;margin: 10px 0 0 12%;" class="col button button-raised button-fill color-blue btnregistrar" onclick="call()">Ligar</button>
+                    </div>
+                  </div>
+                </div>
+            </li>
+            
+
+
+
+
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  return {
+    data: function () {
+      return {
+        products: this.$root.products,
+      };
+    }
+  };
+</script>
