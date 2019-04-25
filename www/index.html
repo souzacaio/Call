@@ -2,15 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <!--
-  Customize this policy to fit your own app's needs. For more guidance, see:
-      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-  Some notes:
-      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-          * Enable inline JS: add 'unsafe-inline' to default-src
-  -->
   <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,8 +13,15 @@
   <link rel="stylesheet" href="framework7/css/framework7.bundle.min.css">
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/app.css">
-  <script src="https://jssip.net/download/releases/jssip-0.7.22.min.js"></script>
-
+  <!---<script src="https://jssip.net/download/releases/jssip-0.7.22.min.js"></script>-->
+  <script src="js/jssip7-23.js"></script>
+  
+  <!---
+    
+        Autor : Caio Souza. 
+        E-mail: caio.souza@live.com
+        Data  : 25/04/2019
+  -->
 
   <script>
   
@@ -32,35 +30,8 @@
         }
 
         function iniciar(){
-          /* bloco responsavel por rodar com app matado. nao funciona ainda. teste */
-          window.powerManagement.acquire(function() {
-              alert(1);
-          }, function() {
-            alert(1);
-          });
-                  
-          /*var ringtones;
          
-          cordova.plugins.NativeRingtones.getRingtone(function(success) {
-                  ringtones = success;
-                  alert(ringtones);
-                  cordova.plugins.NativeRingtones.playRingtone(ringtones);
-                  cordova.plugins.NativeRingtones.playRingtone("system/media/audio/calendar_alert_chord.caf");
-              },
-              function(err) {
-                  alert(err);
-                  alert(2);
-              });
-              //An object array contains all the ringtones
-              setTimeout(function() {
-              
-                cordova.plugins.NativeRingtones.playRingtone("system/media/audio/calendar_alert_chord.caf");
-              
-              }, 1000);   */   
         }
-
-
-       
 
       </script>
 
@@ -125,7 +96,7 @@
 
         .btncall{
 
-              top: 74%;
+              top: 67%;
               width: 100%;
               position: relative;
 
@@ -139,31 +110,44 @@
 
         }
 
+        .timer-timer{
 
+           padding: 0 0px 0 223px;
+            position: relative;
+            width: 100%;
+            top: 19%;
+            right: 35%;
+            color: white;
 
+        }
 
-      
-      
-      
       </style>
 
 </head>
 <body>
   <div id="app">
       <div class="calling">
+					<div class="row" style="position: relative;top: 12%;"> 
+								<span id="whocalling" style="color: white;font-size: 21px;top: 3px;position: relative; left: 17%;"></span>
+					</div>
+					<div class="row no-gap timer-timer"> 
+						<div class="col-100 " onclick="audio_device(this)">
+								<span class="timer_calling"></span>
+						</div> 
+				</div>
           <div class="groupbtn row no-gap"> 
               <div class="col-50 closed" onclick="audio_device(this)">
                   <i class="f7-icons " style="color:white;margin-left: 22px; font-size: 43px;">volume_mute_fill</i><br><span style="color: white;">Auto - Falante</span>
               </div>
               <div class="col-50" style="padding-left: 53px;">
-                  <i class="f7-icons" style="color:white;margin-left: 22px; font-size: 43px;">mic_fill</i><br><span style="color: white;margin-left: 25px;">Mudo</span>
+                  <i class="f7-icons" style="color:white;margin-left: 22px; font-size: 43px;">mic_fill</i><br><span style="color: white;margin-left: 18px;">Mudo</span>
               </div> 
           </div>
           <div class="btncall"> 
               <span class="atd"><img src="img/aceitar.png" style="width:27%"/></span>
               <span class="finalizar"><img src="img/negar.png" style="width:55%;margin-left: 53px;"/></span>
           </div>
-      </div>
+    </div>
     <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar"></div>
     <!-- Left panel with cover effect-->
@@ -286,61 +270,6 @@
                         <div class="row"><button style="margin: 24px 0 0 24%;" class="col button button-raised button-fill color-blue btnregistrar" onclick="registrar()">Registrar</button><div></div>
                     </ul>
                 </div>
-
-            <!---<div class="block-title">Navigation</div>
-            <div class="list">
-              <ul>
-                <li>
-                  <a href="/about/" class="item-content item-link">
-                    <div class="item-inner">
-                      <div class="item-title">About</div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div class="block-title">Modals</div>
-            <div class="block block-strong">
-              <div class="row">
-                <div class="col-50">
-                  <a href="#" class="button button-raised button-fill popup-open" data-popup="#my-popup">Popup</a>
-                </div>
-                <div class="col-50">
-                  <a href="#" class="button button-raised button-fill login-screen-open" data-login-screen="#my-login-screen">Login Screen</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="block-title">Panels</div>
-            <div class="block block-strong">
-              <div class="row">
-                <div class="col-50">
-                  <a href="#" class="button button-raised button-fill panel-open" data-panel="left">Left Panel</a>
-                </div>
-                <div class="col-50">
-                  <a href="#" class="button button-raised button-fill panel-open" data-panel="right">Right Panel</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="block-title searchbar-hide-on-search">Page Loaders & Router</div>
-            <div class="list links-list searchbar-hide-on-search">
-              <ul>
-                <li>
-                  <a href="/page-loader-template7/vladimir/123/about-me/1/?start=0&end=30#top">Template7 Page</a>
-                </li>
-                <li>
-                  <a href="/page-loader-component/vladimir/123/about-me/1/?start=0&end=30#top">Component Page</a>
-                </li>
-                <li>
-                  <a href="/load-something-that-doesnt-exist/">Default Route (404)</a>
-                </li>
-                <li>
-                  <a href="/request-and-load/user/123456/">Request Data & Load</a>
-                </li>
-              </ul>
-            </div>-->
           </div>
         </div>
       </div>
@@ -377,50 +306,10 @@
       </div>
     </div>
 
-    <!-- Login Screen -->
-    <!---<div class="login-screen" id="my-login-screen">
-      <div class="view">
-        <div class="page">
-          <div class="page-content login-screen-content">
-            <div class="login-screen-title">Login</div>
-            <div class="list">
-              <ul>
-                <li class="item-content item-input">
-                  <div class="item-inner">
-                    <div class="item-title item-label">Username</div>
-                    <div class="item-input-wrap">
-                      <input type="text" name="username" placeholder="Your username">
-                    </div>
-                  </div>
-                </li>
-                <li class="item-content item-input">
-                  <div class="item-inner">
-                    <div class="item-title item-label">Password</div>
-                    <div class="item-input-wrap">
-                      <input type="password" name="password" placeholder="Your password">
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="list">
-              <ul>
-                <li>
-                  <a href="#" class="item-link list-button login-button">Sign In</a>
-                </li>
-              </ul>
-              <div class="block-footer">Some text about login information.<br>Click "Sign In" to close Login Screen</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>-->
   <!-- Cordova -->
   
   <script src="cordova.js"></script>
   
- 
   <!-- Framework7 library -->
   <script src="framework7/js/framework7.bundle.min.js"></script>
 
@@ -433,177 +322,241 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   
 <script>
-         
-          function smartphone () {
+        var ua          = '';
+        var session     = '';
+        var number      = '';
+        var callOptions = '';
+        var type_call   = '';
+        var audio       = '';
+        var tempo       = '';
+        var identidade  = '';
 
-              var beepstop = false;
+        function smartphone () {
 
-              this.play_bipe = function(){
+            var beepstop = false;
+            this.play_bipe = function(){
 
-                setInterval( function() {
-                      if (!beepstop){navigator.notification.beep(3); navigator.notification.vibrate(800);}
-                }, 5000);
+              setInterval( function() {
+                    if (!beepstop){navigator.notification.beep(3); navigator.notification.vibrate(800);}
+              }, 5000);
 
-              };
+            };
 
-              this.stopBeep = function(){
+            this.stopBeep = function(){
 
-                  beepstop = true;
+                beepstop = true;
 
-              }
+            }
 
-              this.auto_falante = function(){
+            this.auto_falante = function(){
 
-                  AudioToggle.setAudioMode(AudioToggle.SPEAKER);
+                AudioToggle.setAudioMode(AudioToggle.SPEAKER);
 
-              }
+            }
 
-              this.audio_normal = function(){
+            this.audio_normal = function(){
 
-                  AudioToggle.setAudioMode(AudioToggle.EARPIECE);
+                AudioToggle.setAudioMode(AudioToggle.EARPIECE);
 
-              } 
+            } 
+        }
 
-          }
 
         var celular = new smartphone();
 
-         function registrar(){
+
+        function registrar(){
            
             var ramal   = $('#ramal').val();
             var senha   = $('#ramalsenha').val();
             var retorno = false;
-            var ua = new JsSIP.UA({
-                'uri': 'sip:0000000000063'+ramal+'@leo.controlcondo.com.br', 
-                'password': '0000000000063'+senha, 
-                'ws_servers': 'wss://leo.controlcondo.com.br:8089/ws'
+            ua = new JsSIP.UA({
+                'uri': 'sip:000000000063'+ramal+'@leo.controlcondo.com.br', 
+                'password': '000000000063'+senha, 
+                'ws_servers': 'wss://leo.controlcondo.com.br:8089/ws',
             });
-            
-            
+
+            /* Registra Ramal no Asterisk */
             ua.start();
+
+            /* Faz ligação */
+            $('.ligar').click(function(){
+              
+              var eventHandlers = {
+
+                  'progress': function(e) {
+                    $("#status-call").html('Chamando ...').show().css('color','#15b515');
+                  },
+                  'failed': function(e) { /* Chamada Finalizada. Lado de quem iniciou a ligacao */
+                  
+                    $("#status-call").html('Chamada finalizada ...').show().css('color','#ff443a');  
+                    setTimeout(function(){
+                        $("#status-call").hide();
+                    },2500);
+
+                  },
+                  'ended': function(e) { /* Chamada Finalizada. Acao Lado de quem recebeu a ligacao */
+                     $("#status-call").hide();
+                  },
+                  'confirmed': function(e) {
+                    $("#status-call").html('Chamada em andamento ...').show().css('color','#15b515');
+                  },
+
+                };
+
+                callOptions = {
+                  'eventHandlers'    : eventHandlers,
+                  'mediaConstraints' : { 'audio': true, 'video': false }
+                };
+
+
+                number = '000000000063'+document.getElementById('callramal').value;
+                session  = ua.call('sip:'+number, callOptions);  
+
+                session.on('addstream', function(e){
+
+                      audio = document.createElement('audio');
+                      audio.srcObject = e.stream;
+                      audio.play();  
+                      celular.audio_normal();
+
+                })
+
+            });
+
+        
             ua.on("registered", function(data){
                 
                 $('.online').css('background-color','#21f329');
                 $('.online-t').css('color','#21f329').html('Conectado <strong>'+ramal+'</strong>');
                 $('.form1').hide();
                 $('.form2').show();
-    
+
             });
 
             ua.on("unregistered", function(data){
-                
+              console.log(data);
+              
+            });
+
+            ua.on("disconnected", function(data){
+              console.log(data);
+             
             });
 
             ua.on("registrationFailed", function(data){
+              console.log(data);
+             
+            });
 
+            /* Encerra ligação (Lado de quem ligou)*/
+           $('.encerrar').click(function(){
+            
+              ua.terminateSessions();
+              $("#status-call").hide();
+              //$("#status-call").hide();
+            
+              // ua.stop();
+              //ua.start();
+              
+                /* 
+                  list of methods that we can use in some cases (I just got it here because the site is get out yet)
+                  session.isEnded()
+                  ua.unregister();
+                  ua.stop();
+                  ua.terminate();
+                  ua.sessiontTerminate();
+                  session.isInProgress()
+
+                */
+           });
+
+    
+            /* check if there are some return of server side or client side */
+            ua.on("newRTCSession", function(data){
+      
+              session        = data.session; 
+              type_call      = session.direction;
+              identidade     = session.remote_identity;
+              var dtmfSender;
+
+
+              /*
+                list of methods that we can use in some cases (I just got it here because the site is get out yet)
+                session.isEnded();
+                session.isEstablished();
+                session.isInProgress();
+            */
+
+              
+            /* Encerra ligação (Lado de quem recebeu a ligacao)*/
+            $('.finalizar').click(function(){
+                        
+                session.terminate();
+                celular.stopBeep();
+                $('.calling').hide();
+                tempo.stop();
 
             });
-    
-            /* check if there are some return of server side or client side*/
-            ua.on("newRTCSession", function(data){
-    
-            var session   = data.session; 
-            var type_call = session.direction;
-            var dtmfSender;
-    
-                if(type_call == 'incoming'){
-        
-                    celular.play_bipe();
-                    $('.calling').show();
-                    //$('.atd').show();
-                    // $('.finalizar').show();
-                    // $('.ligar').attr('disabled','disabled');
-          
-                }
 
-                $('.atd').click(function(){
-                      celular.stopBeep();
-                      session.answer();
-                      /*$('.calling').hide();*/
-                      session.on('addstream', function(e){
 
-                      var audio = document.createElement('audio');
+            /* Atende ligação */
+            $('.atd').click(function(){
+
+                  celular.stopBeep();
+                  session.answer();
+                  tempo.start();
+
+                  session.on('addstream', function(e){
+
+                      audio = document.createElement('audio');
                       audio.srcObject = e.stream;
                       audio.play();  
                       celular.audio_normal();
 
-                   })
-               })
+                  })
+              })
 
-               $('.finalizar').click(function(){
-                    session.terminate();
-                    celular.stopBeep();
-                    $('.calling').hide();
-              });
-          });
-       }
-
-          
-      function call() {
+      
+              /* Identifica Chamada Recebida */
+              if(type_call == 'incoming'){
         
-          var ramal = $('#ramal').val();
-          var senha = $('#ramalsenha').val();
+                  //celular.play_bipe();
+                  $('.calling').show();
+                   $('#whocalling').text(identidade.uri.user).show();
 
-          var ua = new JsSIP.UA({
-              'uri': 'sip:000000000063'+ramal+'@leo.controlcondo.com.br', 
-              'password': '000000000063'+senha, 
-              'ws_servers': 'wss://leo.controlcondo.com.br:8089/ws'
-            });
+                  var intervalo = setInterval(function(){
 
-          ua.start();
+                    if(session.isEnded()){
+                      
+                        $("#status-call").hide();
+                        $('.calling').hide();
+                        celular.stopBeep();
+                        parar();
+                        tempo.stop();
+                
+                    }
 
-          var eventHandlers = {
-
-              'progress': function(e) {
-                console.log('call is in progress');
-              },
-
-              'failed': function(e) {
-                console.log(e);
-              },
-              'ended': function(e) {
-
-                console.log('call ended with cause: '+ e.data.cause);
-              },
-              'confirmed': function(e) {
-                  
-                  
-                console.log('call confirmed');
-              },
-
-              'registered': function(e) {
-                console.log('teste1');
-              }
-          };
-
-          var callOptions = {
-            'eventHandlers'    : eventHandlers,
-            'mediaConstraints' : { 'audio': true, 'video': false }
-          };
+                  },1000);
 
 
-          var number = '000000000063'+document.getElementById('callramal').value;
-          var session  = ua.call('sip:'+number, callOptions);  
-          session.on('addstream', function(e){
+                  function parar(){
 
-              var audio = document.createElement('audio');
-              audio.srcObject = e.stream;
-              audio.play();  
-              celular.audio_normal();
+                    clearInterval(intervalo);
 
-          });
-
-          ua.on("newRTCSession", function(data){
-
-          });
+                  }
+               }
+              
+           });
 
       }
 
+           
+      /* Habilita Viva Voz (Ativo, Não Ativo)*/
       function audio_device(el){
 
             var status = $(el).attr('class');
             if(status.indexOf('closed') > 0){
-
 
               $(el).removeClass('closed').addClass('opened');
               $(el).html('<i class="f7-icons" style="color:white;margin-left: 22px; font-size: 43px;">volume_fill</i><br><span style="color: white;">Auto - Falante</span>');
@@ -616,12 +569,99 @@
               $(el).html('<i class="f7-icons" style="color:white;margin-left: 22px; font-size: 43px;">volume_mute_fill</i><br><span style="color: white;">Auto - Falante</span>');
               celular.audio_normal();
             }
+       }
+
+       
+      function timer() {
+
+        var segundos     = 0;
+        var minutos      = 0;
+        var valor        = '';
+        var segundos_fmt = '';
+        var minutos_fmt  = '';
+        var repeticao    = '';
+    
+        /* Begin Timer */
+        this.start = function(){
+        
+          repeticao = setInterval(function(){    
+
+             if(segundos < 10){
+
+                segundos_fmt = '0';
+    
+            }else 
+            if(segundos >= 10 && segundos <= 60){
+    
+                segundos_fmt = '';
+    
+            }
+    
+            if(minutos < 10){
+    
+                minutos_fmt = '0';
+    
+            }else 
+            if(minutos >= 10 && minutos <= 60){
+    
+                minutos_fmt = '';
+    
+            }
+    
+            valor = minutos_fmt+minutos+':'+segundos_fmt+segundos;	
+    
+            if(segundos == 60){
+  
+                minutos += 1;
+                segundos = 0;
+
+            }
+    
+            $('.timer_calling').text(valor).show();
+            segundos = segundos+1;
+
+            check = false;
+
+          },1000);
+          
+        }
+
+         /* Stop Timer */
+        this.stop = function(){
+
+          clearInterval(repeticao);
+          $('.timer_calling').hide();
+          segundos     = 0;
+          minutos      = 0;
+
+        }
+
+     }
+
+     tempo = new timer();
+
+     function formata_ramal(ramal_txt){
+
+      var inicio = '';
+      var fim    = '';
+      var ramal  = '';
+
+      try{
+         inicio = ramal_txt.indexOf('<')+5;
+         fim    = ramal_txt.indexOf('@')-inicio;
+         ramal  = ramal_txt.substr(inicio,fim);
+
+
+      }catch{
+
+        remal = 'erro';
       }
+        
 
+        return ramal;
 
+     }
 
-
-      
 
 </script>
   
